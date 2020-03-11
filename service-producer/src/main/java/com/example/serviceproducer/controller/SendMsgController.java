@@ -1,7 +1,6 @@
 package com.example.serviceproducer.controller;
 
-import com.alibaba.fastjson.JSON;
-import com.example.serviceproducer.bean.Message;
+import com.example.core.bean.Mymessage;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,13 +23,13 @@ public class SendMsgController {
     @RequestMapping("/sndDirectMsg")
     public String sendDirectMsg(){
 
-        Message msg = Message.builder().
+        Mymessage msg = Mymessage.builder().
                 messageId(String.valueOf(UUID.randomUUID())).
                 createTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))).
                 body("hello world")
                 .build();
         //发送消息
-        rabbitTemplate.convertAndSend("direct.exchange","pxc", JSON.toJSON(msg));
+        rabbitTemplate.convertAndSend("direct.exchange","pxc", msg);
         return "OK";
     }
 }

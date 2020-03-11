@@ -1,4 +1,6 @@
-package com.example.serviceconsumer.bean;
+package com.example.core.bean;
+
+
 
 import lombok.Builder;
 import lombok.Data;
@@ -11,7 +13,7 @@ import java.io.Serializable;
  */
 @Data
 @Builder
-public class Message implements Serializable {
+public class Mymessage implements Serializable {
 
     private static final long serialVersionUID = -3769676432799705977L;
 

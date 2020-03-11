@@ -19,22 +19,40 @@
     <properties>
         <java.version>1.8</java.version>
         <skipTests>true</skipTests>
+        <service.core.version>0.0.1-SNAPSHOT</service.core.version>
+        <fastjson.version>1.2.55</fastjson.version>
     </properties>
 
     <modules>
         <module>service-producer</module>
         <module>service-consumer</module>
+        <module>service-core</module>
     </modules>
 
 
 
-    
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.example</groupId>
+                <artifactId>service-core</artifactId>
+                <version>${service.core.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
             </plugin>
         </plugins>
     </build>
